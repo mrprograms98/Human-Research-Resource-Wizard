@@ -7,21 +7,100 @@
 </head>
 <body>
 
-<header>…zelfde header…</header>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <img src="medium.hope.png">
+      <h2 class="welcome-title">bekijk het kostenplaatje</h2>
+    </div>
+  </div>
+
+  <!-- Decorative shapes -->
+  <div class="float-shape float-1" aria-hidden="true"></div>
+  <div class="float-shape float-2" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">
+      <img src="" height="80">
+      <p>Human Research Resource Wizard</p>
+    </a>
+
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="#home">✦ Home</a></li>
+        <li><a href="#over" data-key="nav_about">✦ diensten</a></li>
+        <li><a href="#werkwijze" data-key="nav_method">✦ tarieven</a></li>
+        <li><a href="#contact" data-key="nav_contact">✦ Contact</a></li>
+
+        <li class="lang-btn" data-lang="nl">
+          <a href="#">✦ NL <img src="https://flagcdn.com/nl.svg" width="30" alt="NL"></a>
+        </li>
+
+        <li class="lang-btn" data-lang="de">
+          <a href="#">✦ EN <img src="" width="30" alt="EN"></a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="hamburger">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </header>
 
 <main>
-    <h1>Tarieven</h1>
+    <h1>Strategische HR & Human Development</h1>
     <p>
-        Tarieven zijn afhankelijk van traject en maatwerk.
-        Neem contact op voor een persoonlijk voorstel.
+        Human Research Resource Wizard ondersteunt ondernemers met personeel
+        en medewerkers die vastlopen door ziekte, ontslag of richtingverlies.
     </p>
 
-    <a class="button" href="contact.html">Contact opnemen</a>
+    <a class="button" href="contact.html">Afspraak maken</a>
 </main>
 
-<footer>© Human Research Resource Wizard</footer>
-<a class="whatsapp" href="https://wa.me/31643037004">💬</a>
+<footer>
+  <div class="footer-container">
 
-<script src="script.js"></script>
+        <div class="footer-col">
+            <h3>Strategische HR & Human Development</h3>
+            <p>Human Research Resource Wizard ondersteunt ondernemers met personeel en medewerkers die vastlopen door ziekte, ontslag of richtingverlies.
+
+</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Snelle Links</h3>
+            <ul>
+                <li><a href="overons.html">tarieven</a></li>
+                <li><a href="diensten.html">diensten</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Volg ons</h3>
+            <a href="">linkedin</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Strategische HR & Human Development Alle rechten voorbehouden.</p>
+    </div>
+
+</footer>
+
+  <!-- WhatsApp knop -->
+  <button class="whatsapp-btn" id="whatsappBtn" aria-label="WhatsApp">
+    <svg class="whatsapp-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path fill="#FFFFFF"
+        d="M256 0C114.6 0 0 114.6 0 256c0 45.4 11.9 89.4 34.6 128.1L0 512l132.5-33.5C172.3 498.3 214.3 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0zM256 470c-38.6 0-76.4-10.4-109.3-30l-7.8-4.6-78.7 20 21-81.3-5-7.8C56 329.7 44 293.9 44 256 44 138.5 138.5 44 256 44s212 94.5 212 212-94.5 214-212 214zM375 323.2c-6.5-3.2-38.3-19.3-44.2-21.5s-10.3-3.2-14.7 3.2c-4.4 6.5-17.1 21.5-20.9 25.9s-7.7 4.8-14.1 1.6c-38.3-19.3-63.4-34.6-88.3-77.3-6.5-11.3 6.5-10.5 18.6-34.6 2.1-4.8 1-8.9-.5-12.1-1.6-3.2-14.7-35.6-20.2-48.9-5.3-12.6-10.7-10.8-14.7-11-3.7-.2-8.1-.2-12.5-.2-4.4 0-11.7 1.6-17.8 8.1s-23.4 22.9-23.4 55.8c0 33 24 64.6 27.4 69.1 3.2 4.5 47.3 72.3 115.1 101.6 42.7 18.4 59.4 20 80.7 16.8 12.9-2.1 38.3-15.6 43.7-30.7 5.5-15.1 5.5-28 3.9-30.7-1.6-2.9-5.9-4.7-12.5-7.9z"/>
+    </svg>
+  </button>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
+
