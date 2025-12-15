@@ -1,25 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>Human Research Resource Wizard</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Medium.Hope – Readings, Coaching & Fotoreading | Helderheid & Inzichten</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-   <div class="float-shape float-1" aria-hidden="true"></div>
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-content">
+      <img src="medium.hope.png">
+      <h2 class="welcome-title">Welkom</h2>
+    </div>
+  </div>
+
+  <!-- Decorative shapes -->
+  <div class="float-shape float-1" aria-hidden="true"></div>
   <div class="float-shape float-2" aria-hidden="true"></div>
 
+  <!-- Header -->
   <header class="header">
     <a href="#" class="logo">
-      <img src="" height="80" alt="">
+      <img src="" height="80">
+      <p>Human Research Resource Wizard</p>
     </a>
 
     <nav class="nav-menu">
       <ul>
         <li><a href="#home">✦ Home</a></li>
-        <li><a href="#diensten" data-key="nav_about">✦ diensten</a></li>
-        <li><a href="#tarieven" data-key="nav_method">✦ tarieven</a></li>
+        <li><a href="#over" data-key="nav_about">✦ diensten</a></li>
+        <li><a href="#werkwijze" data-key="nav_method">✦ tarieven</a></li>
         <li><a href="#contact" data-key="nav_contact">✦ Contact</a></li>
 
         <li class="lang-btn" data-lang="nl">
@@ -27,7 +40,7 @@
         </li>
 
         <li class="lang-btn" data-lang="de">
-          <a href="#">✦ EN <img src="gb.svg" width="30" alt="EN"></a>
+          <a href="#">✦ EN <img src="" width="30" alt="EN"></a>
         </li>
       </ul>
     </nav>
@@ -49,47 +62,39 @@
     <a class="button" href="contact.html">Afspraak maken</a>
 </main>
 
-  <footer class="site-footer">
-    <div class="container footer-container">
+<footer>
+  <div class="footer-container">
 
-      <div class="footer-column">
-        <h3 class="footer-title">
-          Medium.Hope <img src="" height="" alt="">
-        </h3>
-        <p class="footer-text" data-key="footer_about_text"></p>
-      </div>
+        <div class="footer-col">
+            <h3>Strategische HR & Human Development</h3>
+            <p>Human Research Resource Wizard ondersteunt ondernemers met personeel en medewerkers die vastlopen door ziekte, ontslag of richtingverlies.
 
-      <div class="footer-column">
-        <h3 class="footer-subtitle" data-key="footer_nav_title">Navigatie</h3>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#diensten" data-key="footer_about">diensten</a></li>
-          <li><a href="#tarieven" data-key="footer_method">tarieven</a></li>
-          <li><a href="#contact" data-key="footer_contact_nav">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-column">
-        <h3 class="footer-subtitle" data-key="footer_contact_nav">Contact</h3>
-        <p class="footer-text" data-key="footer_location">Papendrecht, Nederland</p>
-        <p class="footer-text">
-          📧 <a href="mailto:lindawener@me.com">lindawener@me.com</a>
-        </p>
-
-        <div class="socials">
-          <a href="" class="social-link">
-            <i class="fab fa-tiktok"></i> linkedin
-          </a>
+</p>
         </div>
-      </div>
+
+        <div class="footer-col">
+            <h3>Snelle Links</h3>
+            <ul>
+                <li><a href="overons.html">tarieven</a></li>
+                <li><a href="diensten.html">diensten</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Volg ons</h3>
+            <a href="">linkedin</a>
+        </div>
 
     </div>
 
-    <div class="footer-bottom" data-key="footer_copyright">
-      © 2025 diensten — Alle rechten voorbehouden
+    <div class="footer-bottom">
+        <p>&copy; 2025 Strategische HR & Human Development Alle rechten voorbehouden.</p>
     </div>
-  </footer>
 
+</footer>
+
+  <!-- WhatsApp knop -->
   <button class="whatsapp-btn" id="whatsappBtn" aria-label="WhatsApp">
     <svg class="whatsapp-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path fill="#FFFFFF"
@@ -97,6 +102,7 @@
     </svg>
   </button>
 
-<script src="js/script.js"></script>
+  <script src="js/script.js"></script>
+
 </body>
 </html>
