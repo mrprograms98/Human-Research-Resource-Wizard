@@ -160,45 +160,49 @@ h2 {
 
 .contact-form {
   background-color: #222; /* Donkere achtergrond voor het formulier */
-  padding: 20px;
+  padding: 30px; /* Meer padding voor een nettere uitstraling */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px;
+  max-width: 480px; /* Kleine verandering in de max-width voor een nettere look */
+  margin: 0 auto; /* Zorgt ervoor dat het formulier altijd in het midden staat */
 }
 
 .contact-form label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px; /* Klein beetje extra marge voor labels */
   font-weight: bold;
   color: #fff;
+  font-size: 16px; /* Klein beetje groter font voor leesbaarheid */
 }
 
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 2px solid #a158f2; /* Paarse rand */
-  border-radius: 4px;
+  padding: 12px; /* Meer padding voor de velden */
+  margin-bottom: 18px; /* Extra ruimte tussen de velden */
+  border: 2px solid #a158f2; /* Paarse rand voor input velden */
+  border-radius: 5px; /* Aangepaste border-radius voor een zachtere uitstraling */
   background-color: #333; /* Donkere achtergrond voor velden */
   color: #fff; /* Witte tekst */
+  font-size: 14px; /* Kleinere lettergrootte voor input en textarea */
 }
 
 .contact-form textarea {
-  height: 120px;
-  resize: none;
+  height: 150px; /* Meer hoogte voor textarea */
+  resize: vertical; /* Zorgt ervoor dat gebruikers de hoogte van de textarea kunnen aanpassen */
 }
 
 .contact-form button {
   background-color: #a158f2; /* Paarse achtergrond voor de knop */
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 14px 0; /* Meer hoogte voor de knop */
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px; /* Grotere lettergrootte voor de knop */
   width: 100%;
+  transition: background-color 0.3s ease-in-out; /* Vervang hover met een transition */
 }
 
 .contact-form button:hover {
@@ -273,23 +277,17 @@ footer {
     width: 22px;
   }
 }
-/* Responsive styling */
 @media (max-width: 600px) {
   .contact-form {
-    padding: 15px;
+    padding: 20px; /* Verminder padding op kleinere schermen */
+    width: 90%; /* Formulier krijgt 90% van de breedte op kleinere schermen */
   }
   
-  .contact-form label {
-    font-size: 14px;
-  }
-
+  .contact-form label,
   .contact-form input,
-  .contact-form textarea {
-    font-size: 14px;
-  }
-
+  .contact-form textarea,
   .contact-form button {
-    font-size: 14px;
+    font-size: 14px; /* Kleiner font op kleinere schermen */
   }
 }
 @media (max-width: 768px) {
@@ -327,5 +325,6 @@ footer {
     font-size: 18px;
   }
 }
+
 
 
