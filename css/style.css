@@ -132,6 +132,7 @@ body {
 main {
   text-align: center;
   flex: 1;
+  background-image: url('https://mkbdeventer.nl/wp-content/uploads/2022/12/hrm-algemeen.webp');
 }
 
 .button {
@@ -326,4 +327,5 @@ footer {
     font-size: 18px;
   }
 }
+
 
