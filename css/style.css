@@ -13,6 +13,7 @@ body {
   justify-content: flex-start; /* BELANGRIJK */
   height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 .preloader {
@@ -142,6 +143,67 @@ main {
   color: white;
 }
 
+h2 {
+  text-align: center;
+  color: #a158f2; /* Paarse kleur voor de titel */
+  margin-bottom: 20px;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Volledige schermhoogte */
+  padding: 20px;
+}
+
+.contact-form {
+  background-color: #222; /* Donkere achtergrond voor het formulier */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #a158f2; /* Paarse rand */
+  border-radius: 4px;
+  background-color: #333; /* Donkere achtergrond voor velden */
+  color: #fff; /* Witte tekst */
+}
+
+.contact-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+.contact-form button {
+  background-color: #a158f2; /* Paarse achtergrond voor de knop */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+}
+
+.contact-form button:hover {
+  background-color: #8c4fc3; /* Lichtere paarse kleur bij hover */
+}
+
 footer {
   position: relative;
   left: 0;
@@ -210,7 +272,25 @@ footer {
     width: 22px;
   }
 }
+/* Responsive styling */
+@media (max-width: 600px) {
+  .contact-form {
+    padding: 15px;
+  }
+  
+  .contact-form label {
+    font-size: 14px;
+  }
 
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 14px;
+  }
+
+  .contact-form button {
+    font-size: 14px;
+  }
+}
 @media (max-width: 768px) {
   .hamburger {
     display: block; /* Toon de hamburgerknop */
@@ -246,3 +326,4 @@ footer {
     font-size: 18px;
   }
 }
+
