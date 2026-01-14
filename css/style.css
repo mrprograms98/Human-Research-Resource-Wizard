@@ -1,5 +1,5 @@
 :root{
-  --purple: #3b0050;
+  --blue: #00f;
 }
 
 html {
@@ -325,6 +325,7 @@ footer {
     font-size: 18px;
   }
 }
+
 
 
 
