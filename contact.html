@@ -13,7 +13,7 @@
   <div class="preloader">
     <div class="preloader-content">
       <img src="" alt="">
-      <h2 class="welcome-title">Welkom</h2>
+      <h2 class="welcome-title">bericht ons en we staan klaar!</h2>
     </div>
   </div>
 
@@ -52,7 +52,7 @@
     </div>
   </header>
 
-<main>
+<main class="hero">
     <h1>Strategische HR & Human Development</h1>
     <p>
         Human Research Resource Wizard ondersteunt ondernemers met personeel
@@ -61,20 +61,25 @@
 
     <a class="button" href="contact.html">Afspraak maken</a>
 </main>
-
-<section class="section">
-  <h2>Stel gerust je vraag</h2>
-  <form class="contact-form" action="https://formspree.io/f/mpwkzjky" method="POST">
-    <label for="email">Je e-mail:</label>
-    <input type="email" name="email" id="email" required placeholder="Vul je e-mail in">
-    
-    <label for="message">Je bericht:</label>
-    <textarea name="message" id="message" required placeholder="Schrijf hier je bericht"></textarea>
-    
-    <button type="submit" class="btn">Verstuur</button>
-  </form>
-</section>
   
+ <section>
+    <h2 style="text-align:center;">Contactformulier</h2>
+    <div class="contact-form">
+      <form action="/submit-form" method="POST">
+        <label for="naam">Naam</label>
+        <input type="text" id="naam" name="naam" required>
+
+        <label for="email">E-mailadres</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="bericht">Vraag / Opmerking</label>
+        <textarea id="bericht" name="bericht" rows="4" required></textarea>
+
+        <input type="submit" value="Verstuur">
+      </form>
+    </div>
+  </section>
+
 <footer>
   <div class="footer-container">
 
@@ -120,5 +125,3 @@
 
 </body>
 </html>
-
-
