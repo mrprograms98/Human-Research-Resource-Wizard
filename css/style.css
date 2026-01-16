@@ -81,9 +81,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to bottom, blue, rgba(128, 0, 128, 0)); 
+  background: linear-gradient(to bottom, var(--blue), rgba(13,71,161,0)); 
   color: white;
   padding: 10px 20px;
+  transition: all 0.35s ease;
+}
+
+.header.scrolled {
+  background: rgba(13,71,161,0.92);
+  backdrop-filter: blur(8px);
+  padding: 6px 20px;
 }
 
 .logo {
@@ -168,9 +175,40 @@ main .button {
 }
 
 main .button:hover {
-  background-color: #29003a;
   transform: translateY(-2px);
 }
+
+/* BUTTON HOVER (was paars #29003a) */
+main .button:hover,
+.partner-btn:hover {
+  background-color: var(--blue-light);
+}
+
+.button, .btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after, .btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.button:hover::after,
+.btn:hover::after {
+  transform: translateX(100%);
+}
+
+
 .partner-buttons {
   display: flex;
   gap: 20px;
@@ -234,7 +272,7 @@ main .button:hover {
 }
 
     .contact-form {
-      background-color: #6a1b9a; /* Paars */
+      background-color: var(--blue); /* Paars */
       color: white;
       padding: 40px;
       border-radius: 10px;
@@ -287,8 +325,7 @@ main .button:hover {
     }
     .contact-form input:focus, .contact-form textarea:focus {
       outline: none;
-      border-color: #4CAF50; /* Groene focus rand */
-    }
+      border-color: var(--blue-light);     }
 /* HR Wizard sectie */
 .hr-wizard {
   max-width: 1100px;
@@ -318,13 +355,16 @@ main .button:hover {
   left: 0;
   height: 6px;
   width: 100%;
-  background: linear-gradient(90deg, var(--blue), #9c27b0);
+  background: linear-gradient(90deg, var(--blue), var(--blue-light));
 }
 
 /* Hover effect */
 .hr-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 55px rgba(0,0,0,0.15);
+    box-shadow:
+    0 20px 55px rgba(0,0,0,0.15),
+    0 0 0 1px rgba(84,114,211,0.25),
+    0 0 40px rgba(84,114,211,0.15);
 }
 
 /* Kopjes */
@@ -386,7 +426,11 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(128, 0, 128, 0), blue);
+  background: linear-gradient(
+    to bottom,
+    rgba(13,71,161,0),
+    var(--blue)
+  );  
   color: white;
   padding: 40px 0 20px;
   font-family: sans-serif;
@@ -439,7 +483,13 @@ footer {
 }
 
 
-.whatsapp-btn{position:fixed;right:20px;bottom:20px;background:linear-gradient(180deg, #7e62a8, blue);width:64px;height:64px;border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;box-shadow:0 14px 40px rgba(107, 75, 168, 0.16);z-index:90;transition:transform .18s; border:none; outline: none; }
+.whatsapp-btn{position:fixed;right:20px;bottom:20px;  
+  background: linear-gradient(
+    180deg,
+    var(--blue-light),
+    var(--blue)
+  );width:64px;height:64px;border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;  box-shadow: 0 14px 40px rgba(13,71,161,0.25);
+z-index:90;transition:transform .18s; border:none; outline: none; }
 .whatsapp-btn:hover{transform:translateY(-6px);}
 .whatsapp-svg{width:30px;height:30px;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.12));}
 
@@ -469,8 +519,12 @@ footer {
     position: absolute;
     right: 0;
     top: 50px; /* Onder de header */
-    background: linear-gradient(to bottom, rgba(128, 0, 128, 0), blue, rgba(128, 0, 128, 0)); /* paars naar transparant */
-    width: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(13,71,161,0),
+      var(--blue),
+      rgba(13,71,161,0)
+    );    width: 100%;
     text-align: center;
     max-height: 0;
     overflow: hidden;
@@ -504,4 +558,45 @@ footer {
   .split-section.reverse {
     direction: ltr;
   }
+}
+/* Basis animatie */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.float-shape {
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.18;
+  z-index: -1000;
+  animation: float 18s ease-in-out infinite;
+}
+
+.float-1 {
+  background: #0d47a1;
+  top: 10%;
+  left: -120px;
+}
+
+.float-2 {
+  background: #000;
+  bottom: 10%;
+  right: -140px;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-60px); }
+  100% { transform: translateY(0); }
 }
