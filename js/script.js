@@ -202,3 +202,8 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  document.querySelector('.header')
+    .classList.toggle('scrolled', window.scrollY > 40);
+});
