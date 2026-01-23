@@ -1,209 +1,187 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // 📌 Elements
-  const whatsappBtn = document.getElementById('whatsappBtn');
-  const planBtn = document.getElementById('planBtn');
 
-  // WhatsApp button
-  whatsappBtn?.addEventListener('click', () => {
-    window.open('https://wa.me/31622341519', '_blank', 'noopener');
+  const hamburger = document.querySelector('.hamburger');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const menuClose = document.querySelector('.menu-close');
+
+  if (!hamburger || !menuOverlay) return;
+
+  // OPEN / SLUIT via hamburger
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
   });
 
-  // Plan button scroll to contact
-  planBtn?.addEventListener('click', () => {
-    const contact = document.getElementById('contact');
-    contact?.scrollIntoView({behavior:'smooth', block:'start'});
+  // SLUIT via close knop
+  menuClose?.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.classList.remove('menu-open');
   });
 
-  // Preloader
-  const preloader = document.querySelector('.preloader');
-  if(preloader){
-    setTimeout(() => {
-      preloader.classList.add('fade-out');
-      setTimeout(() => { preloader.style.display = 'none'; }, 1200);
-    }, 3000);
-  }
 });
- 
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-});
-
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Alle elementen met vertaalbare tekst identificeren via data-key
-  const translations = {
-  NL: {
-    "nav_about": "✦diensten",
-    "nav_method": "✦tarieven",
-    "nav_contact": "✦Contact",
-    "welcome_title": "Welkom",
-    "welcome_sub": "",
-    "reading_title": "",
-    "reading_desc": "",
-    "photoreading_title": "",
-    "photoreading_desc": "",
-    "coaching_title": "",
-    "coaching_desc": "",
-    "about_title": "",
-    "about_text1": "",
-    "about_text2": "",
-    "contact_title": "",
-    "contact_sub": "",
-    "contact_form_title": "",
-    "contact_form_sub": "",
-    "contact_form_email": "",
-    "contact_form_question": "",
-    "contact_form_button": "",
-    "highlight1_title": "",
-    "highlight1_desc": "",
-    "highlight2_title": "",
-    "highlight2_desc": "",
-    "highlight3_title": "",
-    "highlight3_desc": "",
-    "method_title": "",
-    "method_sub": "",
-    "step1_title": "",
-    "step1_text": "",
-    "step2_title": "",
-    "step2_text": "",
-    "step3_title": "",
-    "step3_text": "",
-    "step4_title": "",
-    "step4_text": "",
-    "contact_info_title": "",
-    "contact_location_label": "",
-    "contact_location_value": "",
-    "contact_response_label": "",
-    "contact_response_value": "",
-    "contact_practical_title": "",
-    "contact_practical_text": "",
-    "contact_session_title": "",
-    "contact_session_text": "",
-    "location_title": "",
-    "location_sub": "",
-    "location_address_title": "",
-    "location_space_label": "",
-    "location_space_value": "",
-    "location_hours_label": "",
-    "location_hours_value": "",
-    "location_access_label": "",
-    "location_access_value": "",
-    "footer_about_text": "",
-    "footer_nav_title": "",
-    "footer_home": "Home",
-    "footer_about": "Over mij",
-    "footer_method": "Werkwijze",
-    "footer_contact_nav": "Contact",
-    "footer_location": "",
-    "footer_response": "",
-    "footer_follow": "",
-    "footer_copyright": ""
-  },
-  EN: {
-    "nav_about": "✦",
-    "nav_method": "✦",
-    "nav_contact": "✦",
-    "welcome_title": "",
-    "welcome_title": "",
-    "welcome_sub": "",
-    "reading_title": "",
-    "reading_desc": "",
-    "photoreading_title": "",
-    "photoreading_desc": "",
-    "coaching_title": "",
-    "coaching_desc": "",
-    "about_title": "",
-    "about_text1": "",
-    "about_text2": "",
-    "contact_title": "",
-    "contact_sub": "",
-    "contact_form_title": "",
-    "contact_form_sub": "",
-    "contact_form_email": "",
-    "contact_form_question": "",
-    "contact_form_button": "",
-    "highlight1_title": "",
-    "highlight1_desc": "",
-    "highlight2_title": "",
-    "highlight2_desc": "",
-    "highlight3_title": "",
-    "highlight3_desc": "",
-    "method_title": "",
-    "method_sub": "",
-    "step1_title": "",
-    "step1_text": "",
-    "step2_title": "",
-    "step2_text": "",
-    "step3_title": "",
-    "step3_text": "",
-    "step4_title": "",
-    "step4_text": "",
-    "contact_info_title": "",
-    "contact_location_label": "",
-    "contact_location_value": "",
-    "contact_response_label": "",
-    "contact_response_value": "",
-    "contact_practical_title": "",
-    "contact_practical_text": "",
-    "contact_session_title": "",
-    "contact_session_text": "",
-    "location_title": "",
-    "location_sub": "",
-    "location_address_title": "",
-    "location_space_label": "",
-    "location_space_value": "",
-    "location_hours_label": "",
-    "location_hours_value": "",
-    "location_access_label": "",
-    "location_access_value": "",
-    "footer_about_text": "",
-    "footer_nav_title": "",
-    "footer_home": "",
-    "footer_about": "",
-    "footer_method": "",
-    "footer_contact_nav": "",
-    "footer_location": "",
-    "footer_response": "",
-    "footer_follow": "",
-    "footer_copyright": ""
-  }
-};
 
+  /* =====================
+     WhatsApp knop
+  ====================== */
+  const whatsappBtn = document.getElementById('whatsappBtn');
+  whatsappBtn?.addEventListener('click', () => {
+    window.open('https://wa.me/31643037004', '_blank', 'noopener');
+  });
+
+  /* =====================
+     Plan knop scroll
+  ====================== */
+  const planBtn = document.getElementById('planBtn');
+  planBtn?.addEventListener('click', () => {
+    document.getElementById('contact')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  /* =====================
+     Preloader
+  ====================== */
+  const preloader = document.querySelector('.preloader');
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add('fade-out');
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 2300); // match CSS animatie
+    }, 3000);
+  }
+
+  /* =====================
+     Taal wisselaar
+  ====================== */
+  const translations = {
+    NL: {
+      nav_about: "diensten",
+      nav_method: "tarieven",
+      nav_contact: "Contact",
+      footer_home: "Home"
+    },
+    EN: {
+      nav_about: "services",
+      nav_method: "pricing",
+      nav_contact: "Contact",
+      footer_home: "Home"
+    }
+  };
 
   function setLanguage(lang) {
-    for (let key in translations[lang]) {
-      const el = document.querySelector(`[data-key="${key}"]`);
-      if(el) el.innerHTML = translations[lang][key];
-    }
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const key = el.dataset.key;
+      if (translations[lang]?.[key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
   }
 
-  // Knoppen
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', e => {
       e.preventDefault();
-      const lang = btn.getAttribute('data-lang');
-      setLanguage(lang);
+      setLanguage(btn.dataset.lang);
     });
   });
 });
+
 const observer = new IntersectionObserver(
   entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
       }
     });
   },
   { threshold: 0.15 }
 );
 
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+reveals.forEach(r => observer.observe(r));
 
-window.addEventListener('scroll', () => {
-  document.querySelector('.header')
-    .classList.toggle('scrolled', window.scrollY > 40);
+const cards = document.querySelectorAll('.hr-card');
+
+cards.forEach(card => cardObserver.observe(card));
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".main-section h1", {
+  y: 40,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power3.out"
+});
+
+gsap.from(".main-section p", {
+  y: 30,
+  opacity: 0,
+  duration: 1,
+  delay: 0.2,
+  stagger: 0.15,
+  ease: "power3.out"
+});
+
+gsap.from(".cbtn", {
+  y: 20,
+  opacity: 0,
+  duration: 0.8,
+  delay: 0.8,
+  ease: "power2.out"
+});
+
+
+gsap.utils.toArray(".hr-card").forEach((card, i) => {
+  gsap.from(card, {
+    scrollTrigger: {
+      trigger: card,
+      start: "top 85%",
+    },
+    y: 40,
+    opacity: 0,
+    duration: 0.7,
+    delay: i * 0.08,
+    ease: "power3.out"
+  });
+});
+
+gsap.utils.toArray(".split-section").forEach(section => {
+  const content = section.querySelector(".split-content");
+  const image = section.querySelector(".split-image");
+
+  gsap.from(content, {
+    scrollTrigger: {
+      trigger: section,
+      start: "top 80%",
+    },
+    x: -40,
+    opacity: 0,
+    duration: 0.9,
+    ease: "power3.out"
+  });
+
+  gsap.from(image, {
+    scrollTrigger: {
+      trigger: section,
+      start: "top 80%",
+    },
+    x: 40,
+    opacity: 0,
+    duration: 0.9,
+    ease: "power3.out"
+  });
+});
+
+gsap.to(".hero-wrapper", {
+  backgroundPosition: "50% 20%",
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".hero-wrapper",
+    start: "top top",
+    end: "bottom top",
+    scrub: true
+  }
 });
