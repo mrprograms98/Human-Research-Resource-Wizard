@@ -125,7 +125,10 @@ li {
   background: #000; /* 💣 hard zwart */
   color: var(--white);
   padding: 10px 20px;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 10001;
 }
 
@@ -220,11 +223,8 @@ a {
 .hero {
   min-height: 100vh;
   background: var(--hrblue);
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 0 10%;
-  text-align: center;
   flex: 1;
   position: relative;
   overflow: hidden;
@@ -1237,6 +1237,7 @@ border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;z-in
     rgba(0,0,0,0.85),
     rgba(0,0,0,0)
   );
+    align-self: flex-start;
 }
 .hero-section {
   background: transparent; /* belangrijk */
@@ -1329,5 +1330,6 @@ section ul li::after {
 .section ul li::before {
   display: none !important;
 }
+
 
 
