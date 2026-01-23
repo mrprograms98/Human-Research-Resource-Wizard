@@ -748,6 +748,9 @@ section ul li::before {
   z-index: 1;
   max-width: 900px;
   padding: 0 20px;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .main-section strong {
@@ -1197,8 +1200,6 @@ border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;z-in
   animation: heroBackgroundMove 30s linear infinite;
     display: flex;
   flex-direction: column;
-  justify-content: center; /* verticaal */
-  align-items: center;     /* horizontaal */
   text-align: center;
 }
 .hero-wrapper::before {
@@ -1219,6 +1220,11 @@ border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;z-in
       50% { background-position: top right; }
       100% { background-position: center; }
     }
+@media (max-width: 768px) {
+  .main-section {
+    top: 55%;
+  }
+}
 
 .header,
 .hero-section {
@@ -1323,4 +1329,5 @@ section ul li::after {
 .section ul li::before {
   display: none !important;
 }
+
 
