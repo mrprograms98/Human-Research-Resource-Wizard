@@ -117,6 +117,11 @@ li {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 } 
+.hero-wrapper .button,
+.hero-wrapper .cbtn {
+  width: auto;
+  max-width: fit-content;
+}
 
 .header {
   display: flex;
@@ -1062,11 +1067,15 @@ border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;z-in
   .menu-langs a img {
     width: 22px;
   }
-  .cbtn,
-  .button {
+  main .button,
+  section .button,
+  .contact-form .button {
     width: 100%;
-    padding: 14px;
-    font-size: 1rem;
+  }
+    .hero-wrapper .button,
+  .hero-wrapper .cbtn {
+    padding: 14px 28px;
+    font-size: 0.95rem;
   }
     .social {
     width: 44px;
@@ -1330,6 +1339,7 @@ section ul li::after {
 .section ul li::before {
   display: none !important;
 }
+
 
 
 
