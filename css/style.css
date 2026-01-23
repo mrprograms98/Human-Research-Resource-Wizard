@@ -636,6 +636,7 @@ button:active,
   grid-template-columns: repeat(2, 1fr);
   gap: 4rem;
   align-items: center;
+  justify-content: center;
   padding: 6rem 10%;
 }
 
@@ -685,9 +686,6 @@ button:active,
   transform: translateX(0);
 }
 
-
-/* ===== Algemene content styling ===== */
-
 .section-box {
   width: 100%;
   max-width: min(1100px, 92vw);
@@ -696,7 +694,6 @@ button:active,
   border-radius: 18px;
   box-shadow: 0 18px 45px rgba(0,0,0,0.06);
 }
-
 
 section:nth-of-type(2) { animation-delay: .1s; }
 section:nth-of-type(3) { animation-delay: .2s; }
@@ -1339,6 +1336,7 @@ section ul li::after {
 .section ul li::before {
   display: none !important;
 }
+
 
 
 
