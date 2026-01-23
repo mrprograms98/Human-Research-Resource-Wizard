@@ -1,17 +1,34 @@
 :root{
-  --blue: #0d47a1;            /* diep blauw */
-  --blue-light: #5472d3;      /* lichter blauw */
-  --blue-glow: rgba(84,114,211,.35);
+  /* Primary brand colors */
+  --blue-accent: #5E9FFD;       /* accent / hover */
+  --blue-soft: #C6DAF3;         /* lichte achtergrond */
 
-  --bg-soft: #f7f5ef;
-  --text-dark: #1f1f1f;
-  --glass: rgba(255,255,255,0.75);
+  /* Neutrals */
+  --black: #0f0f0f;
+  --dark-gray: #1c1c1c;
+  --white: #ffffff;
+
+  /* UI */
+  --text-dark: #1a1a1a;
+  --text-light: #f5f5f5;
+  
+  --hrblue: #3A97D2; 
 }
-
-html {
-  height: 100%;
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html, body {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+html {
+  height: 100%;
+  font-size: clamp(15px, 1vw, 17px);
+  scroll-behavior: smooth;
+  min-height: 100vh;
 }
 
 body {
@@ -19,8 +36,24 @@ body {
   flex-direction: column;
   justify-content: flex-start; /* BELANGRIJK */
   height: 100%;
-  padding: 0;
-  margin: 0;
+}
+
+h1, h2, h3 {
+  color: var(--hrblue);
+}
+
+h1 {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+}
+
+p,
+li {
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  line-height: 1.7;
 }
 
 .preloader {
@@ -29,7 +62,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #f7f5ef; 
+    background: radial-gradient(
+    circle,
+    #ffffff,
+    #f7f5ef
+  ); 
   display: flex;
   align-items: center;
   text-align: center;
@@ -37,6 +74,7 @@ body {
   z-index: 999999;
   opacity: 1;
   transition: opacity 0.8s ease;
+  pointer-events: all;
 }
 
 /* Langzamere pulse animatie */
@@ -55,6 +93,7 @@ body {
 /* Fade-out langzamer en zachter */
 .preloader.fade-out {
   opacity: 0;
+  pointer-events: none;  
   transition: opacity 2.2s ease; /* was 1s → nu 2.2s */
 }
 
@@ -66,7 +105,9 @@ body {
 }
 
 .preloader h2 {
-  font-size: 28px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  font-size: 0.85rem;
   letter-spacing: 2px;
   font-weight: 400;
 }
@@ -81,16 +122,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(to bottom, var(--blue), rgba(13,71,161,0)); 
-  color: white;
+  background: #000; /* 💣 hard zwart */
+  color: var(--white);
   padding: 10px 20px;
-  transition: all 0.35s ease;
-}
-
-.header.scrolled {
-  background: rgba(13,71,161,0.92);
-  backdrop-filter: blur(8px);
-  padding: 6px 20px;
+  position: relative;
+  z-index: 10001;
 }
 
 .logo {
@@ -107,15 +143,28 @@ body {
 }
 
 .nav-menu ul li a {
-  color: white;
+  color: var(--white);
   text-decoration: none;
   padding: 10px 15px;
   display: block;
 }
 
+.nav-menu ul li a:hover {
+  color: var(--hrblue);
+}
+a {
+  transition: color .2s ease, opacity .2s ease;
+}
+
 .hamburger {
   display: none;
   cursor: pointer;
+
+  position: fixed;          /* 🔥 BELANGRIJK */
+  top: 18px;
+  right: 20px;
+  pointer-events: auto;
+  z-index: 10002; 
 }
 
 .bar {
@@ -142,15 +191,163 @@ body {
 .nav-menu.active {
   display: block !important;
 }
+.cbtn a{
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  animation: none;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
 
+.cbtn a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+@keyframes softPulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+  70% { box-shadow: 0 0 0 18px rgba(255,255,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(1255,255,255,0); }
+}
+
+.button1 {background-color: var(--hrblue);} 
 .hero {
   min-height: 100vh;
+  background: var(--hrblue);
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0 10%;
   text-align: center;
   flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.65)
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: heroFade 1.4s ease forwards;
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Maak alle knoppen rond */
+button, .btn, .cbtn a {
+  border-radius: 50px; /* Zorgt voor een mooie ronde vorm */
+  padding: 14px 20px; /* Verhoog de padding zodat het rond blijft */
+  font-weight: 600; /* Optioneel: vetgedrukte tekst */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optioneel: schaduw voor diepte */
+  transition: all 0.3s ease; /* Vlotte hover-effecten */
+}
+
+/* Voor knoppen die niet per se een link bevatten, zoals je eerste button */
+button.cbtn {
+  border-radius: 50px;
+  padding: 14px 20px;
+  background-color: var(--hrblue);
+  border: none; /* geen rand */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+button.cbtn a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  padding: 14px 20px;
+  border-radius: 50px;
+}
+.decorative-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(0, 180, 216, 0.2);
+      animation: float 8s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    .circle-1 {
+      width: 100px;
+      height: 100px;
+      top: 10%;
+      left: 5%;
+      animation-duration: 6s;
+    }
+
+    .circle-2 {
+      width: 150px;
+      height: 150px;
+      bottom: 10%;
+      right: 5%;
+      animation-duration: 8s;
+    }
+
+    .circle-3 {
+      width: 120px;
+      height: 120px;
+      top: 40%;
+      left: 40%;
+      background: rgba(255, 122, 0, 0.2);
+      animation-duration: 10s;
+    }
+
+.button {
+  padding: 14px 34px;
+  border-radius: 40px;
+  font-weight: 500;
+  letter-spacing: .3px;
+  box-shadow: 0 10px 30px rgba(31,122,74,0.35);
+  transition: all .25s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 45px rgba(31,122,74,0.45);
+}
+
+/* Ghost variant */
+.button.ghost {
+  background: transparent;
+  color: var(--hrblue);
+  box-shadow: none;
+}
+
+.button.ghost:hover {
+  background: var(--hrblue);
+  color: var(--white);
+}
+
+.reveal {
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal.active {
+  transform: translateY(0);
 }
 
 main {
@@ -162,52 +359,11 @@ main {
   padding: 50px 20px;   /* ruimte rondom de tekst */
 }
 
-main .button {
-  display: inline-block;      /* alleen zo groot als inhoud + padding */
-  padding: 20px;              /* boven/onder = links/rechts */
-  background-color: var(--blue);
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  margin-top: 20px;
-  transition: background-color 0.3s, transform 0.2s;
+main .button,
+.partner-btn {
+  background:var(--hrblue);
+  color: var(--white);
 }
-
-main .button:hover {
-  transform: translateY(-2px);
-}
-
-/* BUTTON HOVER (was paars #29003a) */
-main .button:hover,
-.partner-btn:hover {
-  background-color: var(--blue-light);
-}
-
-.button, .btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.button::after, .btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.25),
-    transparent
-  );
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-
-.button:hover::after,
-.btn:hover::after {
-  transform: translateX(100%);
-}
-
 
 .partner-buttons {
   display: flex;
@@ -217,35 +373,18 @@ main .button:hover,
   margin: 40px 0;
 }
 
-.partner-btn {
-  display: inline-block;
-  padding: 18px;              /* gelijke ruimte rondom tekst */
-  background-color: var(--blue);
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  font-size: 1.05rem;
-  min-width: 160px;           /* zorgt dat ze visueel gelijk zijn */
-  text-align: center;
-  transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-.partner-btn:hover {
-  background-color: #29003a;
-  transform: translateY(-3px);
-}
 .partners {
   padding: 80px 20px;
   background-color: #f7f5ef;
   text-align: center;
 }
 
-.partners h2 {
-  font-size: 2rem;
+.partners h2,
+.hr-card h2 {
+  color: var(--blue-primary);
+    font-size: 2rem;
   margin-bottom: 10px;
-  color: var(--blue);
 }
-
 .partners-sub {
   max-width: 600px;
   margin: 0 auto 50px;
@@ -271,62 +410,174 @@ main .button:hover,
   box-shadow: 0 18px 45px rgba(0,0,0,0.15);
 }
 
-    .contact-form {
-      background-color: var(--blue); /* Paars */
-      color: white;
-      padding: 40px;
-      border-radius: 10px;
-      max-width: 700px;
-      margin: 50px auto;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      font-family: 'Arial', sans-serif;
-    }
-    .contact-form h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.6em;
-      color: white;
-    }
-    .contact-form label {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 1.1em;
-    }
-    .contact-form input, .contact-form textarea {
-      width: calc(100% - 20px); /* Zorgt ervoor dat de padding niet te veel ruimte in beslag neemt */
-      padding: 12px;
-      margin: 0 auto 20px;
-      border: 1px solid #333;
-      border-radius: 5px;
-      font-size: 1.1em;
-      background-color: #fff;
-      color: #333;
-      box-sizing: border-box; /* Zorgt ervoor dat padding en border geen invloed hebben op de breedte */
-    }
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 150px;
-    }
-    .contact-form input[type="submit"] {
-      background-color: #333;
-      color: white;
-      width: auto;              
-      padding: 12px 36px;
-      font-size: 1.2em;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin: 20px auto 0;      
-      display: block;
-    }
-    .contact-form input[type="submit"]:hover {
-      background-color: #555;
-    }
-    .contact-form input:focus, .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--blue-light);     }
-/* HR Wizard sectie */
+/* ===== Premium contact form ===== */
+
+.contact-form {
+  background: linear-gradient(145deg, #000, #0f0f0f);
+  border-radius: 18px;
+  padding: 60px 50px;
+  max-width: 720px;
+  margin: 60px auto;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(58,151,210,0.15),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* Inner form */
+.contact-form-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Fields */
+.field {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #333;
+  padding: 14px 4px;
+  font-size: 1.05rem;
+  color: white;
+  outline: none;
+  resize: none;
+}
+
+.field textarea {
+  min-height: 140px;
+}
+
+/* Floating label */
+.field label {
+  position: absolute;
+  left: 4px;
+  top: 14px;
+  font-size: 0.95rem;
+  color: #aaa;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+/* Active states */
+.field input:focus + label,
+.field input:valid + label,
+.field textarea:focus + label,
+.field textarea:valid + label {
+  top: -10px;
+  font-size: 0.75rem;
+  color: var(--hrblue);
+  letter-spacing: 0.5px;
+}
+
+/* Animated underline */
+.field .line {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: var(--hrblue);
+  transition: width 0.4s ease;
+}
+
+.field input:focus ~ .line,
+.field textarea:focus ~ .line {
+  width: 100%;
+}
+
+/* Submit button */
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--hrblue);
+  color: white;
+  border: none;
+  padding: 16px 36px;
+  font-size: 1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 20px auto 10px;
+  box-shadow: 0 12px 30px rgba(58,151,210,0.45);
+  transition: all 0.3s ease;
+}
+
+.submit-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 45px rgba(58,151,210,0.65);
+}
+
+.submit-btn:hover svg {
+  transform: translateX(6px);
+}
+
+/* Note */
+.form-note {
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 18px;
+  color: #ccc;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .contact-form {
+    padding: 40px 24px;
+  }
+}
+
+
+/* FIXES contactformulier */
+.contact-form {
+  width: 100%;
+}
+
+.contact-form-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.field input,
+.field textarea {
+  box-sizing: border-box;
+}
+
+/* Fix submit button centrering */
+.submit-btn {
+  align-self: center;
+}
+
+button:active,
+.btn:active {
+  transform: scale(0.97);
+}
+
 .hr-wizard {
   max-width: 1100px;
   margin: 80px auto;
@@ -336,7 +587,6 @@ main .button:hover,
   gap: 40px;
 }
 
-/* Kaarten */
 .hr-card {
   background: white;
   padding: 40px 30px;
@@ -347,7 +597,6 @@ main .button:hover,
   overflow: hidden;
 }
 
-/* Subtiele gradient accent */
 .hr-card::before {
   content: "";
   position: absolute;
@@ -355,21 +604,16 @@ main .button:hover,
   left: 0;
   height: 6px;
   width: 100%;
-  background: linear-gradient(90deg, var(--blue), var(--blue-light));
-}
+  background: var(--hrblue);}
 
-/* Hover effect */
 .hr-card:hover {
   transform: translateY(-8px);
-    box-shadow:
-    0 20px 55px rgba(0,0,0,0.15),
-    0 0 0 1px rgba(84,114,211,0.25),
-    0 0 40px rgba(84,114,211,0.15);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.15);
 }
 
 /* Kopjes */
 .hr-card h2 {
-  color: var(--blue);
+  color: var(--purple);
   font-size: 1.6rem;
   margin-bottom: 15px;
   line-height: 1.3;
@@ -421,96 +665,215 @@ main .button:hover,
   transform: scale(1.04);
 }
 
-footer {
-  position: relative;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(13,71,161,0),
-    var(--blue)
-  );  
-  color: white;
-  padding: 40px 0 20px;
-  font-family: sans-serif;
+.split-content,
+.split-image {
+  transition: all .8s ease;
 }
 
-/* Container die alles centreert */
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  padding: 0 20px;
-}
-
-/* Kolommen */
-.footer-column h3 {
-  margin-bottom: 15px;
-  font-size: 18px;
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-column ul li {
-  margin-bottom: 10px;
-}
-
-.footer-column a {
-  color: white;
-  text-decoration: none;
-  opacity: 0.85;
-}
-
-.footer-column a:hover {
+.split-section.visible .split-content {
   opacity: 1;
-  text-decoration: underline;
+  transform: translateX(0);
 }
 
-/* Onderste balk */
-.footer-bottom {
+.split-section.visible .split-image {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* ===== Algemene content styling ===== */
+
+.section-box {
+  width: 100%;
+  max-width: min(1100px, 92vw);
+  padding: clamp(24px, 6vw, 60px);
+  margin: 60px auto;
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.06);
+}
+
+
+section:nth-of-type(2) { animation-delay: .1s; }
+section:nth-of-type(3) { animation-delay: .2s; }
+section:nth-of-type(4) { animation-delay: .3s; }
+
+@keyframes sectionIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: var(--hrblue);
+}
+
+section p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--hrblue);
+  max-width: 820px;
+  margin: 0 auto 20px;
+}
+
+section ul {
+  max-width: 700px;
+  margin: 30px auto;
+  padding-left: 0;
+  list-style: none;
+}
+
+section ul li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+section ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--hrblue);
+  font-weight: bold;
+}
+
+.main-section {
+  color: var(white);
   text-align: center;
-  margin-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  padding-top: 15px;
-  font-size: 14px;
 }
 
+.main-section strong {
+  color: var(--hrblue);
+}
 
-.whatsapp-btn{position:fixed;right:20px;bottom:20px;  
+/* ===== Socials ===== */
+/* Maak alle afbeeldingen in de basic section responsief */
+.main-section img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+#socials ul {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+#socials li {
+  padding-left: 0;
+}
+
+#socials li::before {
+  display: none;
+}
+
+#socials a {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 40px;
+  background: var(--hrblue);
+  color: var(--white);
+  font-weight: 500;
+  transition: transform .25s ease, box-shadow .25s ease;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(255,255,255,0.35);
+}
+
+#socials a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(31,122,74,0.35);
+}
+/* ===== Social icons footer ===== */
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.social {
+  width: 60px; /* of 50px, afhankelijk van je voorkeur */
+  height: 60px;
+  border-radius: 50%;
+  background: var(--hrblue);
+  display: flex; /* gebruik flex om iconen te centreren */
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 50px; /* je hebt dit al, kan blijven */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.social svg {
+  width: 100%;
+  height: 100%;
+  fill: white;
+  display: block;
+  align-items: center;
+}
+
+/* Hover animatie (rustig & gezond) */
+.social:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(31,122,74,0.45);
+}
+
+/* Instagram gradient */
+.social.instagram {
+  background: radial-gradient(
+    circle at 30% 30%,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+}
+
+/* TikTok donker maar stijlvol */
+.social.tiktok {
   background: linear-gradient(
-    180deg,
-    var(--blue-light),
-    var(--blue)
-  );width:64px;height:64px;border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;  box-shadow: 0 14px 40px rgba(13,71,161,0.25);
-z-index:90;transition:transform .18s; border:none; outline: none; }
-.whatsapp-btn:hover{transform:translateY(-6px);}
-.whatsapp-svg{width:30px;height:30px;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.12));}
-
-/* Extra small phones */
-@media (max-width: 480px) {
-  .hamburger .bar {
-    width: 22px;
-  }
-}
-/* Mobiel */
-@media (max-width: 600px) {
-  .hr-card {
-    padding: 30px 22px;
-  }
-
-  .hr-card h2 {
-    font-size: 1.4rem;
-  }
+    135deg,
+    #000,
+    #111
+  );
+  box-shadow: 0 4px 8px 0 white;
 }
 
+/* Facebook iets rustiger blauw */
+.social.facebook {
+  background: linear-gradient(
+    135deg,
+    #1877f2,
+    #145dbf
+  );
+}
+
+/* ===== Footer tekst (inhoudelijk) ===== */
+
+footer p {
+  opacity: 0.8;
+  font-size: 0.95rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--hrblue);
+}
+
+/* ===== Responsive aanpassingen ===== */
 @media (max-width: 768px) {
+  .hero-wrapper {
+    min-height: 80vh;
+    background-position: center top;
+    padding-bottom: 40px;
+  }
   .hamburger {
     display: block; /* Toon de hamburgerknop */
   }
@@ -519,16 +882,13 @@ z-index:90;transition:transform .18s; border:none; outline: none; }
     position: absolute;
     right: 0;
     top: 50px; /* Onder de header */
-    background: linear-gradient(
-      to bottom,
-      rgba(13,71,161,0),
-      var(--blue),
-      rgba(13,71,161,0)
-    );    width: 100%;
+    background: black;
+    width: 100%;
     text-align: center;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+    z-index: 1000;
   }    
   .nav-menu.active {
     max-height: 300px; /* Voldoende hoogte om menu te tonen */
@@ -548,7 +908,193 @@ z-index:90;transition:transform .18s; border:none; outline: none; }
     padding: 12px;
     font-size: 18px;
   }
+    section {
+    padding: 28px 18px;
+    margin: 24px auto;
+    border-radius: 14px;
+  }
+  section h2 {
+    font-size: 1.8rem;
+  }
+
+  section p {
+    font-size: 1rem;
+  }
+
+  .social.tiktok,
+  .social.instagram,
+  .social.facebook {
+    width: 60px;
+    height: 60px;
+  }
+  .social.tiktok svg,
+  .social.instagram svg,
+  .social.facebook svg {
+    width: 100%;
+    height: 100%;
+  }
 }
+
+footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+    background: black;
+  color: var(--white);  padding: 40px 0 20px;
+  text-align: center;
+  text-decoration: none;
+    box-sizing: border-box;
+
+}
+.footer-col a {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: var(--hrblue);
+  color: white;
+  font-size: 0.9rem;
+ list-style: none; 
+text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+
+.footer-col a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+
+}
+/* Container die alles centreert */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  padding: 0 20px;
+  width: 100%;
+}
+
+/* Kolommen */
+.footer-column h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.footer-column ul {
+  list-style: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+list-style: none !important; 
+}
+
+.footer-column a {
+  color: white;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.footer-column a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+/* Puntjes uit footer-lijsten verwijderen */
+.footer-col ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  list-style: none;
+}
+
+/* Onderste balk */
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: none;
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+.whatsapp-btn{position:fixed;right:20px;bottom:20px;  background: #5FFB7B;
+  box-shadow: 0 14px 40px rgba(31,122,74,0.35);
+  width: clamp(52px, 14vw, 64px);
+  height: clamp(52px, 14vw, 64px);
+border-radius:50%;display:grid;place-items:center;color:#fff;cursor:pointer;z-index:90;transition:transform .18s; border:none; outline: none; }
+.whatsapp-btn:hover{transform:translateY(-6px);}
+.whatsapp-svg{width:30px;height:30px;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.12));}
+
+@media (max-width: 480px) {
+  .hamburger .bar {
+    width: 22px;
+  }
+  .menu-links a {
+    font-size: 22px;
+  }
+
+  .menu-logo {
+    width: 140px;
+    margin-bottom: 30px;
+  }
+
+  .menu-langs a img {
+    width: 22px;
+  }
+  .cbtn,
+  .button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+    .social {
+    width: 44px;
+    height: 44px;
+  }
+
+  .social svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 24px 16px;
+    margin: 20px auto;
+  }
+
+  h1, h2 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+  .hr-card {
+    padding: 30px 22px;
+  }
+
+  .hr-card h2 {
+    font-size: 1.4rem;
+  }
+  .footer-container {
+    gap: 24px;
+  }
+
+  .footer-col h3 {
+    margin-bottom: 8px;
+  }
+}
+
 @media (max-width: 900px) {
   .split-section {
     grid-template-columns: 1fr;
@@ -559,44 +1105,207 @@ z-index:90;transition:transform .18s; border:none; outline: none; }
     direction: ltr;
   }
 }
-/* Basis animatie */
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+@media (hover: none) {
+  a:hover,
+  button:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* ===== Fullscreen hamburger menu ===== */
 
-.float-shape {
+.menu-overlay {
   position: fixed;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  filter: blur(140px);
-  opacity: 0.18;
-  z-index: -1000;
-  animation: float 18s ease-in-out infinite;
-}
-
-.float-1 {
-  background: #0d47a1;
-  top: 10%;
-  left: -120px;
-}
-
-.float-2 {
+  inset: 0;
   background: #000;
-  bottom: 10%;
-  right: -140px;
-  animation-delay: 6s;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-60px); }
-  100% { transform: translateY(0); }
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+.menu-content {
+  text-align: center;
+  color: white;
+}
+
+.menu-logo {
+  width: 180px;
+  margin-bottom: 50px;
+}
+
+.menu-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+}
+
+.menu-links li {
+  margin: 20px 0;
+}
+
+.menu-links a {
+  font-size: clamp(20px, 5vw, 28px);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.menu-links a:hover {
+  color: var(--hrblue);
+}
+
+.menu-langs a {
+  margin: 0 15px;
+  font-size: 18px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.menu-langs a:hover {
+  color: var(--hrblue);
+}
+
+.hero-wrapper {
+  position: relative;
+  min-height: 100vh;
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: heroBackgroundMove 30s linear infinite;
+}
+.hero-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.7)
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+    @keyframes heroBackgroundMove {
+      0% { background-position: center; }
+      50% { background-position: top right; }
+      100% { background-position: center; }
+    }
+
+.header,
+.hero-section {
+  position: relative;
+  z-index: 1;
+}
+.header {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0)
+  );
+}
+.hero-section {
+  background: transparent; /* belangrijk */
+  color: white;
+  padding: clamp(90px, 12vh, 140px) clamp(16px, 5vw, 60px);
+  margin: 0 auto;
+  box-shadow: none;
+  border-left: none;
+}
+.menu-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 32px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 10001;
+}
+/* ===== Follow hint animatie ===== */
+
+.follow-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 6px;
+}
+
+.follow-text {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  letter-spacing: 0.5px;
+  color: var(--hrblue);
+}
+
+.arrow {
+  font-size: 40px;
+  color: var(--hrblue);
+  animation: bounceArrow 1.8s infinite ease-in-out;
+}
+
+/* Subtiele bounce animatie */
+@keyframes bounceArrow {
+  0%   { transform: translateY(0); opacity: 0.4; }
+  50%  { transform: translateY(8px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.4; }
+}
+.footer-col:hover .arrow {
+  animation-play-state: paused;
+}
+@keyframes sectionIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 1️⃣1️⃣ Grote schermen (4K / ultrawide) */
+@media (min-width: 1600px) {
+  section,
+  .hr-wizard,
+  .footer-container {
+    max-width: 1400px;
+  }
+}
+
+/* 1️⃣2️⃣ Animaties uitschakelen voor performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.footer-column ul li::before,
+.footer-column ul li::after,
+section ul li::before,
+section ul li::after {
+  display: none !important;
+}
+/* Verwijder pseudo-elementen die mogelijk puntjes toevoegen */
+.footer-column ul li::before,
+.section ul li::before {
+  display: none !important;
 }
