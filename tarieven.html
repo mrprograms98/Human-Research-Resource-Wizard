@@ -1,42 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>Human Research Resource Wizard - Tarieven</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tarieven | Human Research Resource Wizard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>  <!-- Preloader -->
+
+<body>
+<!-- Fullscreen menu overlay -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-content">
+    <button class="menu-close">✕</button>
+
+    <img src="img/HRTR.png" alt="HR logo" class="menu-logo">
+
+    <ul class="menu-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="diensten.html" data-key="nav_about">diensten</a></li>
+              <li><a href="tarieven.html" data-key="nav_method">tarieven</a></li>
+              <li><a href="contact.html" data-key="nav_contact">Contact</a></li>
+              <li><a href="overons.html">over ons</a></li>
+    </ul>
+
+    <div class="menu-langs">
+      <a href="#" data-lang="nl">NL <img src="https://flagcdn.com/nl.svg" width="30" alt="NL"></a>
+      <a href="#" data-lang="en">EN <img src="https://flagcdn.com/gb.svg" width="30" alt="EN"></a>
+    </div>
+
+  </div>
+</div>
+  <!-- Preloader -->
   <div class="preloader">
     <div class="preloader-content">
-      <img src="" alt="">
-      <h2 class="welcome-title">bekijk de kosten</h2>
+      <img src="img/HRTR.png" height="80" alt="logo">
+      <h2 class="welcome-title">bekijk scherpe tarieven</h2>
     </div>
   </div>
 
-  <!-- Decorative shapes -->
-  <div class="float-shape float-1" aria-hidden="true"></div>
-  <div class="float-shape float-2" aria-hidden="true"></div>
+<div class="hero-wrapper">
 
   <!-- Header -->
   <header class="header">
-    <a href="#" class="logo">
-      <img src="" height="80">
-      <p>Human Research Resource Wizard</p>
+    <a href="index.html" class="logo">
+      <img src="img/HRTR.png" height="80" alt="logo">
     </a>
 
     <nav class="nav-menu">
       <ul>
-        <li><a href="index.html">✦ Home</a></li>
-        <li><a href="diensten.html" data-key="nav_about">✦ diensten</a></li>
-        <li><a href="tarieven.html" data-key="nav_method">✦ tarieven</a></li>
-        <li><a href="contact.html" data-key="nav_contact">✦ Contact</a></li>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="diensten.html" data-key="nav_about">diensten</a></li>
+              <li><a href="tarieven.html" data-key="nav_method">tarieven</a></li>
+              <li><a href="contact.html" data-key="nav_contact">Contact</a></li>
+              <li><a href="overons.html">over ons</a></li>
 
         <li class="lang-btn" data-lang="nl">
-          <a href="#">✦ NL <img src="https://flagcdn.com/nl.svg" width="30" alt="NL"></a>
+          <a href="#">NL <img src="https://flagcdn.com/nl.svg" width="30" alt="NL"></a>
         </li>
 
         <li class="lang-btn" data-lang="de">
-          <a href="#">✦ EN <img src="" width="30" alt="EN"></a>
+          <a href="#">EN <img src="https://flagcdn.com/gb.svg" width="30" alt="EN"></a>
         </li>
       </ul>
     </nav>
@@ -48,24 +72,98 @@
     </div>
   </header>
 
-<main class="hero">
-    <h1>Strategische HR & Human Development</h1>
-    <p>
-        Human Research Resource Wizard ondersteunt ondernemers met personeel
-        en medewerkers die vastlopen door ziekte, ontslag of richtingverlies.
-    </p>
+  <!-- Intro / Header -->
+  <section class="main-section reveal">
+    <h1>Tarieven</h1>
+<p>
+    Transparante tarieven en duidelijke afspraken.
+    Altijd vooraf helderheid.
+  </p>
+    <p><button class="cbtn button1"><a href="contact.html">neem contact op</a></button></p>
+  </section>
+        <div class="decorative-circle circle-1"></div>
+      <div class="decorative-circle circle-2"></div>
+      <div class="decorative-circle circle-3"></div>
 
-    <a class="button" href="contact.html">Afspraak maken</a>
-</main>
+</div>
+
+<div class="decorative-circle circle-1"></div>
+<div class="decorative-circle circle-2"></div>
+<div class="decorative-circle circle-3"></div>
+
+</div>
+
+<section class="hr-wizard section-box">
+  <div class="hr-card">
+    <h2>HR-advies (los)</h2>
+    <p>
+      €95 per uur<br>
+      <small>Voor korte vragen of sparmomenten.</small>
+    </p>
+  </div>
+
+  <div class="hr-card">
+    <h2>HR-trajecten</h2>
+    <p>
+      Vanaf €750<br>
+      <small>Afhankelijk van duur en complexiteit.</small>
+    </p>
+  </div>
+
+  <div class="hr-card">
+    <h2>Loopbaanbegeleiding</h2>
+    <p>
+      Vanaf €695<br>
+      <small>Inclusief intake en persoonlijk advies.</small>
+    </p>
+  </div>
+
+  <div class="hr-card">
+    <h2>Verzuim & re-integratie</h2>
+    <p>
+      Op offertebasis<br>
+      <small>Altijd maatwerk.</small>
+    </p>
+  </div>
+
+  <div class="hr-card">
+    <h2>Organisaties & bedrijven</h2>
+    <p>
+      Maatwerkoffertes<br>
+      <small>Voor structurele HR-ondersteuning.</small>
+    </p>
+  </div>
+
+  <div class="hr-card">
+    <h2>Intakegesprek</h2>
+    <p>
+      Gratis & vrijblijvend<br>
+      <small>We bespreken je vraag en mogelijkheden.</small>
+    </p>
+  </div>
+</section>
+
+<section class="split-section reverse">
+  <div class="split-content">
+    <h2>Duidelijkheid vooraf</h2>
+    <p>
+      Geen verrassingen achteraf.
+      Heldere afspraken over inhoud, duur en kosten.
+    </p>
+    <a href="contact.html" class="btn">Plan een intake</a>
+  </div>
+  <div class="split-image">
+    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f" alt="Tarieven">
+  </div>
+</section>
 
 <footer>
   <div class="footer-container">
 
         <div class="footer-col">
-            <h3>Strategische HR & Human Development</h3>
-            <p>Human Research Resource Wizard ondersteunt ondernemers met personeel en medewerkers die vastlopen door ziekte, ontslag of richtingverlies.
-
-</p>
+            <h3>Human Research Resource Wizard</h3>
+            <p>Human Research Resource Wizard ondersteunt organisaties en medewerkers
+  bij duurzame HR-oplossingen en persoonlijke ontwikkeling.</p>
         </div>
 
         <div class="footer-col">
@@ -75,30 +173,36 @@
               <li><a href="diensten.html" data-key="nav_about">diensten</a></li>
               <li><a href="tarieven.html" data-key="nav_method">tarieven</a></li>
               <li><a href="contact.html" data-key="nav_contact">Contact</a></li>
+              <li><a href="overons.html">over ons</a></li>
             </ul>
         </div>
 
         <div class="footer-col">
             <h3>Volg ons</h3>
-            <a href="">linkedin</a>
+        <div class="follow-hint">
+          <span class="follow-text">Volg je ons al?</span>
+          <span class="arrow">↓</span>
         </div>
+<div class="social-icons">
+<a href="https://www.linkedin.com/in/jouw-profiel" 
+   aria-label="LinkedIn" 
+   class="social linkedin"
+   target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.026-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.268 2.368 4.268 5.455v6.286zM5.337 7.433c-1.144 0-2.067-.926-2.067-2.065 0-1.138.923-2.065 2.067-2.065 1.14 0 2.065.927 2.065 2.065 0 1.139-.925 2.065-2.065 2.065zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.727v20.545C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.273V1.727C24 .774 23.2 0 22.222 0h.003z"/>
+  </svg>
+</a>
 
-    </div>
+</div>
+</div>
+</div>
 
     <div class="footer-bottom">
-        <p>&copy; 2025 Strategische HR & Human Development Alle rechten voorbehouden.</p>
+<p>&copy; 2025 Human Research Resource Wizard – Een initiatief van Linda Wener. Alle rechten voorbehouden.</p>
     </div>
 
 </footer>
 
-  <!-- WhatsApp knop -->
-  <button class="whatsapp-btn" id="whatsappBtn" aria-label="WhatsApp">
-    <svg class="whatsapp-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path fill="#FFFFFF"
-        d="M256 0C114.6 0 0 114.6 0 256c0 45.4 11.9 89.4 34.6 128.1L0 512l132.5-33.5C172.3 498.3 214.3 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0zM256 470c-38.6 0-76.4-10.4-109.3-30l-7.8-4.6-78.7 20 21-81.3-5-7.8C56 329.7 44 293.9 44 256 44 138.5 138.5 44 256 44s212 94.5 212 212-94.5 214-212 214zM375 323.2c-6.5-3.2-38.3-19.3-44.2-21.5s-10.3-3.2-14.7 3.2c-4.4 6.5-17.1 21.5-20.9 25.9s-7.7 4.8-14.1 1.6c-38.3-19.3-63.4-34.6-88.3-77.3-6.5-11.3 6.5-10.5 18.6-34.6 2.1-4.8 1-8.9-.5-12.1-1.6-3.2-14.7-35.6-20.2-48.9-5.3-12.6-10.7-10.8-14.7-11-3.7-.2-8.1-.2-12.5-.2-4.4 0-11.7 1.6-17.8 8.1s-23.4 22.9-23.4 55.8c0 33 24 64.6 27.4 69.1 3.2 4.5 47.3 72.3 115.1 101.6 42.7 18.4 59.4 20 80.7 16.8 12.9-2.1 38.3-15.6 43.7-30.7 5.5-15.1 5.5-28 3.9-30.7-1.6-2.9-5.9-4.7-12.5-7.9z"/>
-    </svg>
-  </button>
-
-  <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
